@@ -12,6 +12,7 @@ func _ready() -> void:
 	game_manager = get_node("../Game Manager") as GameManager
 	# connect the hit signal to the game manager
 	game_manager.start_game_loop.connect(on_start_game_loop)
+	game_manager.end_game.connect(on_end_game)
 
 
 func on_start_game_loop() -> void:
@@ -19,6 +20,8 @@ func on_start_game_loop() -> void:
 	$SpawnTimer.start()
 	pass
 
+func on_end_game():
+	$SpawnTimer.stop()
 
 func _on_spawn_timer_timeout() -> void:
 	# get a random caixa from the list that can_go is true

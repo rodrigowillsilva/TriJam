@@ -14,7 +14,13 @@ signal hit(caixa: Caixa, score: int)
 
 func _ready() -> void:
 	hit.connect(game_manager.hit_caixa_callback)
+	game_manager.end_game.connect(on_end_game)
 	$HitBox/CollisionShape2D.disabled = true
+	
+func on_end_game():
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("hit")
+	can_go = true
 
 func start_move() -> void:
 	# get a random value from the curve and set the wait time in the Bounce Timer
@@ -42,7 +48,7 @@ func change_sprite(sprite: CompressedTexture2D) -> void:
 
 
 func Hit() -> void:
-	hit.emit(self, $BounceTime.time_left)
+	hit.emit(self, $BounceTime.time_left/$BounceTime.wait_time)
 	can_go = false
 	change_sprite(caixa_hit)
 	$AnimationPlayer.play("hit")

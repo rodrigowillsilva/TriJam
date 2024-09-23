@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnr1shqpl7nmf"]
+[gd_scene load_steps=9 format=3 uid="uid://dnr1shqpl7nmf"]
 
 [ext_resource type="PackedScene" uid="uid://dogfmy8258da4" path="res://Scenes/game_manager.tscn" id="1_tswby"]
 [ext_resource type="PackedScene" uid="uid://dxirss3p17kbo" path="res://Scenes/player.tscn" id="3_8npgf"]
 [ext_resource type="PackedScene" uid="uid://c0xybls24o35c" path="res://Scenes/machine.tscn" id="4_gu1dc"]
 [ext_resource type="PackedScene" uid="uid://brsva2k2lkgfb" path="res://Scenes/caixa.tscn" id="4_tdao2"]
 [ext_resource type="Texture2D" uid="uid://cg6n1m02fgryl" path="res://icon.svg" id="5_ws7ri"]
+[ext_resource type="Script" path="res://Scenes/label.gd" id="6_uhvjn"]
 
 [sub_resource type="Curve" id="Curve_aq0ej"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
@@ -110,3 +111,12 @@ position = Vector2(-597, -82)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.495, 0.495)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -106.0
+offset_top = -603.0
+offset_right = 105.0
+offset_bottom = -552.0
+theme_override_font_sizes/font_size = 37
+text = "Placeholder"
+script = ExtResource("6_uhvjn")
