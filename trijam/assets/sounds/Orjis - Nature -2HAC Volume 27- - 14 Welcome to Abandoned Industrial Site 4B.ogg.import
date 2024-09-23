@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cloixbkem25vs"
+path="res://.godot/imported/Orjis - Nature -2HAC Volume 27- - 14 Welcome to Abandoned Industrial Site 4B.ogg-6acc1d7664bee5cad3039909bec69cfe.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Orjis - Nature -2HAC Volume 27- - 14 Welcome to Abandoned Industrial Site 4B.ogg"
+dest_files=["res://.godot/imported/Orjis - Nature -2HAC Volume 27- - 14 Welcome to Abandoned Industrial Site 4B.ogg-6acc1d7664bee5cad3039909bec69cfe.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

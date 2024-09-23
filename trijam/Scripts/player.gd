@@ -1,9 +1,10 @@
 extends Node2D
 
 var can_whack: bool = true
+@onready var animated = $AnimatedSprite2D
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
 
 func _process(delta: float) -> void:
 	#follow the mouse
@@ -44,6 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("Left_mouse"):
 			#print("click")
+			animated.play("default")
 			if can_whack:
 				can_whack = false
 				#$AnimationPlayer.play("whack")

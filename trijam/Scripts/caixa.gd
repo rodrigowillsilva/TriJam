@@ -6,7 +6,8 @@ class_name Caixa
 @export var caixa_normal: CompressedTexture2D = null
 @export var caixa_hit: CompressedTexture2D = null
 @export var bounce_curve: Curve
-@export var bounce_max_value: float = 3
+@export var bounce_max_value: float = 2
+@onready var sprite2d = $fite_sprite
 var cor: Color = Color.WHITE
 var can_go: bool = true
 
@@ -14,12 +15,14 @@ signal hit(caixa: Caixa, score: int)
 
 func _ready() -> void:
 	hit.connect(game_manager.hit_caixa_callback)
-	game_manager.end_game.connect(on_end_game)
+	game_manager.end_game_true.connect(on_end_game)
+	game_manager.end_game_false.connect(on_end_game)
 	$HitBox/CollisionShape2D.disabled = true
 	
 func on_end_game():
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("hit")
+	game_manager.timer.stop()
 	can_go = true
 
 func start_move() -> void:
@@ -40,11 +43,12 @@ func start_move() -> void:
 
 func change_color(color: Color) -> void:
 	cor = color
-	$Sprite2D.modulate = color
+	sprite2d.modulate = color
 
 
 func change_sprite(sprite: CompressedTexture2D) -> void:
-	$Sprite2D.texture = sprite
+	#sprite2d.texture = sprite
+	pass
 
 
 func Hit() -> void:

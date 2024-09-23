@@ -1,18 +1,81 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxirss3p17kbo"]
+[gd_scene load_steps=13 format=3 uid="uid://dxirss3p17kbo"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_u8vf2"]
-[ext_resource type="Texture2D" uid="uid://cg6n1m02fgryl" path="res://icon.svg" id="2_pwh2b"]
+[ext_resource type="Texture2D" uid="uid://d3uedpvx5f50n" path="res://assets/graphics/MARRETA.png" id="2_dwmal"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o76ol"]
 radius = 14.0
 height = 44.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6644"]
+atlas = ExtResource("2_dwmal")
+region = Rect2(0, 0, 40, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysa7x"]
+atlas = ExtResource("2_dwmal")
+region = Rect2(40, 0, 40, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y55ko"]
+atlas = ExtResource("2_dwmal")
+region = Rect2(80, 0, 40, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfo4m"]
+atlas = ExtResource("2_dwmal")
+region = Rect2(120, 0, 40, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bptnn"]
+atlas = ExtResource("2_dwmal")
+region = Rect2(160, 0, 40, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bts0f"]
+atlas = ExtResource("2_dwmal")
+region = Rect2(200, 0, 40, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a10ly"]
+atlas = ExtResource("2_dwmal")
+region = Rect2(240, 0, 40, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kchk"]
+atlas = ExtResource("2_dwmal")
+region = Rect2(280, 0, 40, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byrjm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6644")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysa7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y55ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfo4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bptnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bts0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a10ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kchk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6644")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_u8vf2")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.156863, 0.709804, 0.235294, 1)
-texture = ExtResource("2_pwh2b")
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
@@ -22,5 +85,10 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WhackHitibox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_o76ol")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_byrjm")
+offset = Vector2(20, -16)
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

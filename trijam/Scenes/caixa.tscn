@@ -1,7 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://brsva2k2lkgfb"]
+[gd_scene load_steps=11 format=3 uid="uid://brsva2k2lkgfb"]
 
 [ext_resource type="Script" path="res://Scripts/caixa.gd" id="1_mx8gc"]
-[ext_resource type="Texture2D" uid="uid://cg6n1m02fgryl" path="res://icon.svg" id="2_ed2k2"]
+[ext_resource type="Texture2D" uid="uid://cwrv7a8fa24yi" path="res://assets/graphics/caixa_fechada.png" id="2_7kie1"]
+[ext_resource type="Texture2D" uid="uid://bmf57rigt072n" path="res://assets/graphics/fita_caixa.png" id="3_oecgp"]
+
+[sub_resource type="Curve" id="Curve_tksox"]
+_data = [Vector2(0, 1), 0.0, 0.0289986, 0, 0, Vector2(0.836842, 0.747253), 0.0, 0.0, 0, 0, Vector2(1, 0.56044), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Animation" id="Animation_bq20f"]
 length = 0.001
@@ -30,7 +35,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -100), Vector2(0, 0)]
+"values": [Vector2(0, -175), Vector2(0, 0)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -49,6 +54,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lvmq3"]
 resource_name = "go_up"
+length = 1.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -56,15 +63,15 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(0.554785, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -100)]
+"values": [Vector2(0, 0), Vector2(0, -175)]
 }
 
 [sub_resource type="Animation" id="Animation_0yctg"]
 resource_name = "hit"
-length = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -72,10 +79,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.15, 1),
+"transitions": PackedFloat32Array(0.366021, 1.7411, 1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, -175), Vector2(0, -195), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bw4e3"]
@@ -90,10 +97,9 @@ _data = {
 size = Vector2(114, 118)
 
 [node name="Caixa" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_mx8gc")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ed2k2")
+bounce_curve = SubResource("Curve_tksox")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -111,6 +117,15 @@ one_shot = true
 [node name="BounceTime" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="caixa_sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_7kie1")
+
+[node name="fite_sprite" type="Sprite2D" parent="."]
+position = Vector2(-8, -24)
+scale = Vector2(4, 4)
+texture = ExtResource("3_oecgp")
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="BounceTime" to="." method="_on_bounce_time_timeout"]

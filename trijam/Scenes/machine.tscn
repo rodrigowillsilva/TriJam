@@ -1,17 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0xybls24o35c"]
+[gd_scene load_steps=14 format=3 uid="uid://c0xybls24o35c"]
 
 [ext_resource type="Script" path="res://Scripts/machine.gd" id="1_rp46e"]
-[ext_resource type="Texture2D" uid="uid://cg6n1m02fgryl" path="res://icon.svg" id="2_f6f72"]
+[ext_resource type="Texture2D" uid="uid://cxcdf76dyege7" path="res://assets/graphics/CAMADA1-1t.png" id="2_5t65s"]
+[ext_resource type="Texture2D" uid="uid://dax54tqsas8eh" path="res://assets/graphics/CAMADA1-2.png" id="3_d8s3d"]
+[ext_resource type="Texture2D" uid="uid://dgkbrf8kmctqw" path="res://assets/graphics/CAMADA1-3.png" id="4_ct3it"]
+[ext_resource type="Texture2D" uid="uid://d3lq86uc2rb5x" path="res://assets/graphics/CAMADA1-4.png" id="5_na0aj"]
+[ext_resource type="Texture2D" uid="uid://blbsbpfu4qeat" path="res://assets/graphics/CAMADA1-5.png" id="6_u184m"]
+[ext_resource type="Texture2D" uid="uid://xokxt32koc2s" path="res://assets/graphics/CAMADA1-6.png" id="7_qh5lp"]
+[ext_resource type="Texture2D" uid="uid://b247g5foekfgd" path="res://assets/graphics/CAMADA02-1.png" id="8_0rfgq"]
+[ext_resource type="Texture2D" uid="uid://cjhry8bohonvg" path="res://assets/graphics/CAMADA02-2.png" id="9_iixrw"]
+[ext_resource type="Texture2D" uid="uid://cty0tw4n4lc5o" path="res://assets/graphics/CAMADA02-3.png" id="10_0c6un"]
+[ext_resource type="Texture2D" uid="uid://b0hw0hh1874k" path="res://assets/graphics/CAMADA03.png" id="11_b3l5u"]
+[ext_resource type="Texture2D" uid="uid://w5fhsagitk6l" path="res://assets/graphics/background_shadow.png" id="12_ood1f"]
+
+[sub_resource type="Curve" id="Curve_sjei4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.989474, 0.131868), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Machine" type="Node2D"]
+position = Vector2(-24, 14)
+scale = Vector2(3, 3)
 script = ExtResource("1_rp46e")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.0859838, 0.0859838, 0.0859838, 1)
-scale = Vector2(6.055, 6.055)
-texture = ExtResource("2_f6f72")
+spanw_curve = SubResource("Curve_sjei4")
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
+
+[node name="Camada1-1t" type="Sprite2D" parent="."]
+z_index = 7
+position = Vector2(8, -4.83334)
+texture = ExtResource("2_5t65s")
+
+[node name="Camada1-2" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(8, -4.83334)
+texture = ExtResource("3_d8s3d")
+
+[node name="Camada1-3" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(8, -4.83334)
+texture = ExtResource("4_ct3it")
+
+[node name="Camada1-4" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(8, -4.83334)
+texture = ExtResource("5_na0aj")
+
+[node name="Camada1-5" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(8, -4.83334)
+texture = ExtResource("6_u184m")
+
+[node name="Camada1-6" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(8, -4.83334)
+texture = ExtResource("7_qh5lp")
+
+[node name="Camada02-1" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(9, -50.8333)
+texture = ExtResource("8_0rfgq")
+
+[node name="Camada02-2" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(9, -50.8333)
+texture = ExtResource("9_iixrw")
+
+[node name="Camada02-3" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(7, -51.8333)
+texture = ExtResource("10_0c6un")
+
+[node name="Camada03" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(10, -88.8333)
+texture = ExtResource("11_b3l5u")
+
+[node name="BackgroundShadow" type="Sprite2D" parent="."]
+position = Vector2(26, 63)
+texture = ExtResource("12_ood1f")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

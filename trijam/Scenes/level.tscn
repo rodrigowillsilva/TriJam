@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnr1shqpl7nmf"]
+[gd_scene load_steps=41 format=3 uid="uid://dnr1shqpl7nmf"]
 
 [ext_resource type="PackedScene" uid="uid://dogfmy8258da4" path="res://Scenes/game_manager.tscn" id="1_tswby"]
 [ext_resource type="PackedScene" uid="uid://dxirss3p17kbo" path="res://Scenes/player.tscn" id="3_8npgf"]
@@ -6,6 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://brsva2k2lkgfb" path="res://Scenes/caixa.tscn" id="4_tdao2"]
 [ext_resource type="Texture2D" uid="uid://cg6n1m02fgryl" path="res://icon.svg" id="5_ws7ri"]
 [ext_resource type="Script" path="res://Scenes/label.gd" id="6_uhvjn"]
+[ext_resource type="Texture2D" uid="uid://jvrb6iufaiuc" path="res://assets/graphics/MENU.png" id="7_xmy4c"]
+[ext_resource type="Texture2D" uid="uid://crkyik3m5teui" path="res://assets/graphics/jogar.png" id="8_wrf1b"]
+[ext_resource type="Texture2D" uid="uid://dx0jnvwue7e2i" path="res://assets/graphics/opções.png" id="9_fy7ty"]
+[ext_resource type="Texture2D" uid="uid://dwv1qqnpmwwmf" path="res://assets/graphics/sair.png" id="10_h2ogg"]
+[ext_resource type="Texture2D" uid="uid://ba2q57d2ert6m" path="res://assets/graphics/caixa_aberta.png" id="11_n55ma"]
+[ext_resource type="Texture2D" uid="uid://bfpb2jafyph6l" path="res://assets/graphics/fita_caixa_aberta.png" id="12_afg7i"]
+[ext_resource type="Texture2D" uid="uid://bb22l8fdxikkh" path="res://assets/graphics/gameover.png" id="12_mjsff"]
+[ext_resource type="Texture2D" uid="uid://dontlt17qd1fo" path="res://assets/graphics/GATOLARANJA.png" id="13_i67gy"]
+[ext_resource type="FontFile" uid="uid://e4ny0eov512t" path="res://assets/graphics/Pixellettersfull-BnJ5.ttf" id="14_msebv"]
+[ext_resource type="Texture2D" uid="uid://sc6t1xt616ht" path="res://assets/graphics/background_parte1.png" id="15_605t2"]
+[ext_resource type="Texture2D" uid="uid://cy3lnuntwibsn" path="res://assets/graphics/background_parte2.png" id="16_bdrq0"]
+[ext_resource type="Texture2D" uid="uid://cg6h0c86vpbae" path="res://assets/graphics/score.png" id="17_gfv7u"]
+[ext_resource type="AudioStream" uid="uid://cloixbkem25vs" path="res://assets/sounds/Orjis - Nature -2HAC Volume 27- - 14 Welcome to Abandoned Industrial Site 4B.ogg" id="19_jk84b"]
 
 [sub_resource type="Curve" id="Curve_aq0ej"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
@@ -14,6 +27,162 @@ point_count = 1
 [sub_resource type="Curve" id="Curve_vhwoa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.320755), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_oodqf"]
+font = ExtResource("14_msebv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ax3oj"]
+font = ExtResource("14_msebv")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w0vwk"]
+font = ExtResource("14_msebv")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_aqqlu"]
+resource_name = "menu_animation"
+length = 1.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1.93187, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2316, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7tncg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Canvas2/Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 900)]
+}
+
+[sub_resource type="Animation" id="Animation_hlvkc"]
+resource_name = "game_over"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Canvas2/Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.34151, 1),
+"update": 0,
+"values": [Vector2(576, 900), Vector2(576, 324)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1mqy2"]
+_data = {
+"RESET": SubResource("Animation_7tncg"),
+"game_over": SubResource("Animation_hlvkc"),
+"menu_animation": SubResource("Animation_aqqlu")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfgyt"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwch4"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6j5r"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg4dj"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6gwy"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyvr4"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7h2p"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wntxj"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta0d5"]
+atlas = ExtResource("13_i67gy")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ei5rx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfgyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwch4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6j5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg4dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6gwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyvr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7h2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wntxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta0d5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ln28"]
+font = ExtResource("14_msebv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_entq6"]
+font = ExtResource("14_msebv")
+font_color = Color(1, 0.741176, 0, 1)
 
 [node name="Level" type="Node2D"]
 
@@ -27,7 +196,8 @@ spanw_curve = SubResource("Curve_aq0ej")
 [node name="Caixas" type="Node2D" parent="."]
 
 [node name="BoxNode1" type="Node2D" parent="Caixas"]
-position = Vector2(-235, -229)
+z_index = 2
+position = Vector2(-156, -12)
 
 [node name="Caixa1" parent="Caixas/BoxNode1" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -36,7 +206,8 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="BoxNode2" type="Node2D" parent="Caixas"]
-position = Vector2(0, -222)
+z_index = 1
+position = Vector2(6, -99)
 
 [node name="Caixa2" parent="Caixas/BoxNode2" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -45,7 +216,8 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="BoxNode3" type="Node2D" parent="Caixas"]
-position = Vector2(219, -200)
+z_index = 2
+position = Vector2(162, -15)
 
 [node name="Caixa3" parent="Caixas/BoxNode3" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -54,7 +226,8 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="BoxNode4" type="Node2D" parent="Caixas"]
-position = Vector2(-232, 3)
+z_index = 4
+position = Vector2(-303, 63)
 
 [node name="Caixa4" parent="Caixas/BoxNode4" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -63,6 +236,8 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="BoxNode5" type="Node2D" parent="Caixas"]
+z_index = 4
+position = Vector2(6, 63)
 
 [node name="Caixa5" parent="Caixas/BoxNode5" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -71,7 +246,8 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="BoxNode6" type="Node2D" parent="Caixas"]
-position = Vector2(229, 6)
+z_index = 5
+position = Vector2(165, 141)
 
 [node name="Caixa6" parent="Caixas/BoxNode6" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -80,7 +256,8 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="BoxNode7" type="Node2D" parent="Caixas"]
-position = Vector2(-213, 238)
+z_index = 5
+position = Vector2(-159, 144)
 
 [node name="Caixa7" parent="Caixas/BoxNode7" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -89,7 +266,8 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="BoxNode8" type="Node2D" parent="Caixas"]
-position = Vector2(6, 203)
+z_index = 6
+position = Vector2(0, 219)
 
 [node name="Caixa8" parent="Caixas/BoxNode8" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -98,7 +276,8 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="BoxNode9" type="Node2D" parent="Caixas"]
-position = Vector2(241, 232)
+z_index = 4
+position = Vector2(312, 63)
 
 [node name="Caixa9" parent="Caixas/BoxNode9" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
 game_manager = NodePath("../../../Game Manager")
@@ -107,16 +286,168 @@ caixa_hit = ExtResource("5_ws7ri")
 bounce_curve = SubResource("Curve_vhwoa")
 
 [node name="Player" parent="." instance=ExtResource("3_8npgf")]
-position = Vector2(-597, -82)
+z_index = 8
+position = Vector2(910, -209)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.495, 0.495)
+zoom = Vector2(0.7, 0.7)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -106.0
-offset_top = -603.0
-offset_right = 105.0
-offset_bottom = -552.0
+offset_left = -782.0
+offset_top = -422.0
+offset_right = -571.0
+offset_bottom = -371.0
+scale = Vector2(4, 4)
 theme_override_font_sizes/font_size = 37
 text = "Placeholder"
+label_settings = SubResource("LabelSettings_oodqf")
 script = ExtResource("6_uhvjn")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="main_menu" type="Control" parent="Canvas"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/main_menu"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("7_xmy4c")
+
+[node name="jogar" type="Button" parent="Canvas/main_menu"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 300.0
+offset_right = 494.0
+offset_bottom = 321.0
+scale = Vector2(4, 4)
+icon = ExtResource("8_wrf1b")
+flat = true
+icon_alignment = 1
+
+[node name="opções" type="Button" parent="Canvas/main_menu"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 401.0
+offset_right = 490.0
+offset_bottom = 430.0
+scale = Vector2(4, 4)
+icon = ExtResource("9_fy7ty")
+flat = true
+icon_alignment = 1
+
+[node name="sair" type="Button" parent="Canvas/main_menu"]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 539.0
+offset_right = 491.0
+offset_bottom = 562.0
+scale = Vector2(4, 4)
+icon = ExtResource("10_h2ogg")
+flat = true
+icon_alignment = 1
+
+[node name="Canvas2" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Canvas2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 576.0
+offset_top = 900.0
+offset_right = 616.0
+offset_bottom = 940.0
+
+[node name="TextureRect" type="TextureRect" parent="Canvas2/Control"]
+layout_mode = 0
+offset_left = -343.0
+offset_top = -300.0
+offset_right = -167.0
+offset_bottom = -172.0
+scale = Vector2(4, 4)
+texture = ExtResource("12_mjsff")
+
+[node name="Label" type="Label" parent="Canvas2/Control"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 58.0
+offset_right = 89.0
+offset_bottom = 72.0
+scale = Vector2(4, 4)
+text = "1234"
+label_settings = SubResource("LabelSettings_ax3oj")
+
+[node name="Label2" type="Label" parent="Canvas2/Control"]
+layout_mode = 0
+offset_left = -171.0
+offset_top = 120.0
+offset_right = -64.0
+offset_bottom = 143.0
+scale = Vector2(3, 3)
+text = "Press \"R\" to restart"
+label_settings = SubResource("LabelSettings_w0vwk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Canvas/main_menu")
+libraries = {
+"": SubResource("AnimationLibrary_1mqy2")
+}
+
+[node name="CaixaAberta" type="Sprite2D" parent="."]
+position = Vector2(-667, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("11_n55ma")
+
+[node name="fita caixa aberta" type="Sprite2D" parent="CaixaAberta"]
+unique_name_in_owner = true
+position = Vector2(8.5, 6)
+scale = Vector2(1, 1)
+texture = ExtResource("12_afg7i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CaixaAberta"]
+unique_name_in_owner = true
+position = Vector2(0.5, -14)
+sprite_frames = SubResource("SpriteFrames_ei5rx")
+frame_progress = 0.86685
+
+[node name="Label" type="Label" parent="CaixaAberta"]
+offset_left = -27.6
+offset_top = 19.0
+offset_right = 85.4
+offset_bottom = 42.0
+scale = Vector2(0.5, 0.5)
+text = "Don't whack this box"
+label_settings = SubResource("LabelSettings_3ln28")
+
+[node name="BackgroundParte1" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1.69277e-05, -231.5)
+scale = Vector2(1.42882, 1.42901)
+texture = ExtResource("15_605t2")
+
+[node name="BackgroundParte2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 231.5)
+scale = Vector2(1.429, 1.429)
+texture = ExtResource("16_bdrq0")
+
+[node name="Score" type="Sprite2D" parent="."]
+position = Vector2(-677, -333)
+scale = Vector2(4, 4)
+texture = ExtResource("17_gfv7u")
+
+[node name="Label" type="Label" parent="Score"]
+offset_left = 27.0
+offset_top = -7.0
+offset_right = 74.0
+offset_bottom = 7.0
+text = "1234"
+label_settings = SubResource("LabelSettings_entq6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_jk84b")
+
+[connection signal="pressed" from="Canvas/main_menu/jogar" to="Game Manager" method="_on_jogar_pressed"]
+[connection signal="pressed" from="Canvas/main_menu/sair" to="Game Manager" method="_on_sair_pressed"]

@@ -8,10 +8,11 @@ timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 60.0
+one_shot = true
 
 [node name="Timer2" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
-autostart = true
 
 [connection signal="start_game_loop" from="." to="." method="_on_start_game_loop"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
