@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxirss3p17kbo"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_u8vf2"]
+[ext_resource type="Texture2D" uid="uid://cg6n1m02fgryl" path="res://icon.svg" id="2_pwh2b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o76ol"]
+radius = 14.0
+height = 44.0
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_u8vf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.156863, 0.709804, 0.235294, 1)
+texture = ExtResource("2_pwh2b")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="WhackHitibox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WhackHitibox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_o76ol")
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

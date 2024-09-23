@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnr1shqpl7nmf"]
+
+[ext_resource type="PackedScene" uid="uid://dogfmy8258da4" path="res://Scenes/game_manager.tscn" id="1_tswby"]
+[ext_resource type="PackedScene" uid="uid://dxirss3p17kbo" path="res://Scenes/player.tscn" id="3_8npgf"]
+[ext_resource type="PackedScene" uid="uid://c0xybls24o35c" path="res://Scenes/machine.tscn" id="4_gu1dc"]
+[ext_resource type="PackedScene" uid="uid://brsva2k2lkgfb" path="res://Scenes/caixa.tscn" id="4_tdao2"]
+[ext_resource type="Texture2D" uid="uid://cg6n1m02fgryl" path="res://icon.svg" id="5_ws7ri"]
+
+[sub_resource type="Curve" id="Curve_aq0ej"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_vhwoa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.320755), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Level" type="Node2D"]
+
+[node name="Game Manager" parent="." instance=ExtResource("1_tswby")]
+cores_caixa = Array[Color]([Color(0.764706, 0, 0, 1), Color(0.227451, 1, 1, 1), Color(0, 0, 0.862745, 1), Color(1, 0, 0.992157, 1), Color(1, 0.964706, 0, 1)])
+
+[node name="Machine" parent="." node_paths=PackedStringArray("caixas") instance=ExtResource("4_gu1dc")]
+caixas = [NodePath("../Caixas/BoxNode1/Caixa1"), NodePath("../Caixas/BoxNode2/Caixa2"), NodePath("../Caixas/BoxNode3/Caixa3"), NodePath("../Caixas/BoxNode4/Caixa4"), NodePath("../Caixas/BoxNode5/Caixa5"), NodePath("../Caixas/BoxNode6/Caixa6"), NodePath("../Caixas/BoxNode7/Caixa7"), NodePath("../Caixas/BoxNode8/Caixa8"), NodePath("../Caixas/BoxNode9/Caixa9")]
+spanw_curve = SubResource("Curve_aq0ej")
+
+[node name="Caixas" type="Node2D" parent="."]
+
+[node name="BoxNode1" type="Node2D" parent="Caixas"]
+position = Vector2(-235, -229)
+
+[node name="Caixa1" parent="Caixas/BoxNode1" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="BoxNode2" type="Node2D" parent="Caixas"]
+position = Vector2(0, -222)
+
+[node name="Caixa2" parent="Caixas/BoxNode2" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="BoxNode3" type="Node2D" parent="Caixas"]
+position = Vector2(219, -200)
+
+[node name="Caixa3" parent="Caixas/BoxNode3" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="BoxNode4" type="Node2D" parent="Caixas"]
+position = Vector2(-232, 3)
+
+[node name="Caixa4" parent="Caixas/BoxNode4" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="BoxNode5" type="Node2D" parent="Caixas"]
+
+[node name="Caixa5" parent="Caixas/BoxNode5" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="BoxNode6" type="Node2D" parent="Caixas"]
+position = Vector2(229, 6)
+
+[node name="Caixa6" parent="Caixas/BoxNode6" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="BoxNode7" type="Node2D" parent="Caixas"]
+position = Vector2(-213, 238)
+
+[node name="Caixa7" parent="Caixas/BoxNode7" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="BoxNode8" type="Node2D" parent="Caixas"]
+position = Vector2(6, 203)
+
+[node name="Caixa8" parent="Caixas/BoxNode8" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="BoxNode9" type="Node2D" parent="Caixas"]
+position = Vector2(241, 232)
+
+[node name="Caixa9" parent="Caixas/BoxNode9" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_tdao2")]
+game_manager = NodePath("../../../Game Manager")
+caixa_normal = ExtResource("5_ws7ri")
+caixa_hit = ExtResource("5_ws7ri")
+bounce_curve = SubResource("Curve_vhwoa")
+
+[node name="Player" parent="." instance=ExtResource("3_8npgf")]
+position = Vector2(-597, -82)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.495, 0.495)

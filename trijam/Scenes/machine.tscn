@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0xybls24o35c"]
+
+[ext_resource type="Script" path="res://Scripts/machine.gd" id="1_rp46e"]
+[ext_resource type="Texture2D" uid="uid://cg6n1m02fgryl" path="res://icon.svg" id="2_f6f72"]
+
+[node name="Machine" type="Node2D"]
+script = ExtResource("1_rp46e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.0859838, 0.0859838, 0.0859838, 1)
+scale = Vector2(6.055, 6.055)
+texture = ExtResource("2_f6f72")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
