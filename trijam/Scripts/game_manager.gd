@@ -24,6 +24,7 @@ var cor_gato: Color  			# Color of the cat
 var score: int = 0  			# Player's score
 var can_restart: bool = false	# Flag to check if the game can be restarted
 
+
 #############################
 # 	Signals 				#
 #############################
@@ -70,6 +71,10 @@ func start_play() -> void:
 	animplay.play("menu_animation")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
+#############################
+# 	Callbacks handlers   	#
+#############################
+
 # Callback for when a box is hit
 func hit_caixa_callback(caixa: Caixa, s: int) -> void:
 	print("hit")
@@ -93,11 +98,6 @@ func go_down_caixa_callback(caixa: Caixa) -> void:
 		# Player loses points
 		score -= 25
 		score_points.emit(score)
-
-
-#############################
-# 	Callbacks handlers   	#
-#############################
 
 # Timer timeout handler
 func _on_timer_2_timeout() -> void:

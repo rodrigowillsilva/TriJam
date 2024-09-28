@@ -43,21 +43,19 @@ func _ready() -> void:
 	$HitBox/CollisionShape2D.disabled = true
 
 # Starts the movement of the box
-func start_move() -> void:
+func start_move(selected_color: Color) -> void:
 	# Get a random value from the curve and set the wait time in the Bounce Timer
 	$caixa_sprite.visible = true
 	$caixa_amassada_1.visible = false
 	var play_time_inter = 1.0 - ((game_manager.timer.time_left + randf_range(-5, 5)) / game_manager.game_time)
 	play_time_inter = clamp(play_time_inter, 0, 1)
-	print(play_time_inter)
+
 	$BounceTime.wait_time = bounce_curve.sample(play_time_inter) * bounce_max_value
-	print($BounceTime.wait_time)
 	$BounceTime.start()
 	can_go = false
 	change_sprite(caixa_normal)
 	$HitBox/CollisionShape2D.disabled = false
-	var random_color = game_manager.cores_caixa[randi() % game_manager.cores_caixa.size()]
-	change_color(random_color)
+	change_color(selected_color)
 	$AnimationPlayer.play("go_up")
 	pass
 

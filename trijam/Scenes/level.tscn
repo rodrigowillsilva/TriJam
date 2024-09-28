@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cloixbkem25vs" path="res://assets/sounds/Orjis - Nature -2HAC Volume 27- - 14 Welcome to Abandoned Industrial Site 4B.ogg" id="19_jk84b"]
 
 [sub_resource type="Curve" id="Curve_aq0ej"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.266854, 0.607547), 0.0, 0.0, 0, 0, Vector2(0.502809, 0.592453), 0.0, 0.0, 0, 0, Vector2(0.75, 0.350943), 0.0, 0.0, 0, 0, Vector2(0.924157, 0.350943), 0.0, 0.0, 0, 0, Vector2(1, 0.230189), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.22191, 0.65283), 0.0, 0.0, 0, 0, Vector2(0.480337, 0.65283), 0.0, 0.0, 0, 0, Vector2(0.75, 0.350943), 0.0, 0.0, 0, 0, Vector2(0.924157, 0.350943), 0.0, 0.0, 0, 0, Vector2(1, 0.230189), 0.0, 0.0, 0, 0]
 point_count = 6
 
 [sub_resource type="Curve" id="Curve_vhwoa"]
@@ -144,7 +144,7 @@ shadow_offset = Vector2(0, 5.515)
 [node name="Level" type="Node2D"]
 
 [node name="Game Manager" parent="." instance=ExtResource("1_tswby")]
-cores_caixa = Array[Color]([Color(0.764706, 0, 0, 1), Color(0.227451, 1, 1, 1), Color(0, 0, 0.862745, 1), Color(1, 0, 0.992157, 1), Color(1, 0.964706, 0, 1), Color(0.101333, 0.76, 0, 1), Color(0.328, 0, 0.82, 1)])
+cores_caixa = Array[Color]([Color(0.956863, 0, 0, 1), Color(0, 0, 0.929412, 1), Color(0, 0.870588, 0, 1), Color(0, 0.870588, 0.870588, 1), Color(0.909804, 0.894118, 0, 1), Color(1, 0.54902, 0, 1), Color(1, 0.207843, 1, 1)])
 
 [node name="Machine" parent="." node_paths=PackedStringArray("caixas") instance=ExtResource("4_gu1dc")]
 caixas = [NodePath("../Caixas/BoxNode1/Caixa1"), NodePath("../Caixas/BoxNode2/Caixa2"), NodePath("../Caixas/BoxNode3/Caixa3"), NodePath("../Caixas/BoxNode4/Caixa4"), NodePath("../Caixas/BoxNode5/Caixa5"), NodePath("../Caixas/BoxNode6/Caixa6"), NodePath("../Caixas/BoxNode7/Caixa7"), NodePath("../Caixas/BoxNode8/Caixa8"), NodePath("../Caixas/BoxNode9/Caixa9")]

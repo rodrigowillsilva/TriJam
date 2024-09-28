@@ -15,6 +15,9 @@ class_name Machine
 # Reference to the GameManager node
 var game_manager: GameManager
 
+# Weights for each color
+var color_weights: Dictionary = {}
+
 #############################
 # 	Functions 				#
 #############################
@@ -23,11 +26,49 @@ var game_manager: GameManager
 func _ready() -> void:
 	# Get the GameManager node
 	game_manager = get_node("../Game Manager") as GameManager
+
+	# Initialize weights
+	for color in game_manager.cores_caixa:
+		color_weights[color] = 1.0 / game_manager.cores_caixa.size()
 	
 	# Connect signals to their respective handlers
 	game_manager.start_game_loop.connect(on_start_game_loop)
 	game_manager.end_game_true.connect(on_end_game)
 	game_manager.end_game_false.connect(on_end_game)
+
+func select_color() -> Color:
+	var total_weight = 0.0
+	for weight in color_weights.values():
+		total_weight += weight
+		
+	var random_value = randf() * total_weight
+	var cumulative_weight = 0.0
+		
+	for color in color_weights.keys():
+		cumulative_weight += color_weights[color]
+		if random_value < cumulative_weight:
+			update_weights(color)
+			return color
+
+	return Color(1, 1, 1, 1)
+
+
+func update_weights(selected_color: Color) -> void:
+	for color in color_weights.keys():
+		if color == selected_color:
+			color_weights[color] *= 0.5  # Decrease weight of selected color
+		else:
+			color_weights[color] += (1.0 - color_weights[color]) * 0.1  # Increase weight of other colors
+	
+	normalize_weights()
+
+func normalize_weights() -> void:
+	var total_weight = 0.0
+	for weight in color_weights.values():
+		total_weight += weight
+	
+	for color in color_weights.keys():
+		color_weights[color] /= total_weight
 
 
 #############################
@@ -53,7 +94,7 @@ func _on_spawn_timer_timeout() -> void:
 		caixa = caixas[randi() % caixas.size()]
 	
 	# Start the box movement
-	caixa.start_move()
+	caixa.start_move(select_color())
 	
 	# Calculate the play time interval based on the remaining game time
 	var play_time_inter = 1.0 - ((game_manager.timer.time_left + randf_range(-5, 5)) / game_manager.game_time)
