@@ -8,8 +8,8 @@ class_name GameManager
 @export var game_time: int = 60
 @export var machine: Machine
 @onready var animplay = $"../AnimationPlayer"
-@onready var fita_caixa_aberta = %"fita caixa aberta"
-@onready var gatinho = %AnimatedSprite2D
+#@onready var fita_caixa_aberta = %"fita caixa aberta"
+#@onready var gatinho = %AnimatedSprite2D
 @onready var score_label = $"../Score/Label"
 @onready var final_label = $"../Canvas2/Control/Label"
 @onready var audioplay = $"../AudioStreamPlayer"
@@ -40,9 +40,10 @@ func _process(delta: float) -> void:
 
 func start_play() -> void:
 	cor_gato = cores_caixa[randi() % cores_caixa.size()]
-	fita_caixa_aberta.modulate = cor_gato
-	gatinho.play()
-	start_game_loop.emit()
+	start_game.emit()
+	#fita_caixa_aberta.modulate = cor_gato
+	#gatinho.play()
+	
 	animplay.play("menu_animation")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass
@@ -68,7 +69,7 @@ func go_down_caixa_callback(caixa: Caixa) -> void:
 		pass
 	else:
 		# if it is not the same, the player loses
-		score -= 200
+		score -= 25
 		score_points.emit(score)
 	pass
 	
@@ -98,3 +99,6 @@ func _on_main_game_ended() -> void:
 	final_label.text = str(score)
 	animplay.play("game_over")
 	can_restart = true
+
+func start_game_loop_trigger():
+	start_game_loop.emit()

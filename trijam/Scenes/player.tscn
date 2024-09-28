@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d3uedpvx5f50n" path="res://assets/graphics/MARRETA.png" id="2_dwmal"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o76ol"]
-radius = 14.0
-height = 44.0
+radius = 55.0
+height = 170.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6644"]
 atlas = ExtResource("2_dwmal")
@@ -78,17 +78,22 @@ animations = [{
 script = ExtResource("1_u8vf2")
 
 [node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
 
 [node name="WhackHitibox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WhackHitibox"]
+position = Vector2(3, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_o76ol")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-47, 24)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_byrjm")
 offset = Vector2(20, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

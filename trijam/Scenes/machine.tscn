@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://w5fhsagitk6l" path="res://assets/graphics/background_shadow.png" id="12_ood1f"]
 
 [sub_resource type="Curve" id="Curve_sjei4"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.989474, 0.131868), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.564171, 0.456604), 0.0, 0.0, 0, 0, Vector2(0.997326, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Machine" type="Node2D"]
 position = Vector2(-24, 14)
@@ -78,6 +78,7 @@ position = Vector2(10, -88.8333)
 texture = ExtResource("11_b3l5u")
 
 [node name="BackgroundShadow" type="Sprite2D" parent="."]
+z_index = 8
 position = Vector2(26, 63)
 texture = ExtResource("12_ood1f")
 

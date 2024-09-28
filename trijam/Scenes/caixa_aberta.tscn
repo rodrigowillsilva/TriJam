@@ -1,0 +1,108 @@
+[gd_scene load_steps=17 format=3 uid="uid://besf2s11w6708"]
+
+[ext_resource type="Texture2D" uid="uid://ba2q57d2ert6m" path="res://assets/graphics/caixa_aberta.png" id="1_yqv0e"]
+[ext_resource type="Texture2D" uid="uid://bfpb2jafyph6l" path="res://assets/graphics/fita_caixa_aberta.png" id="2_fflgy"]
+[ext_resource type="Script" path="res://Scripts/caixa_aberta.gd" id="2_ymn4c"]
+[ext_resource type="Texture2D" uid="uid://dontlt17qd1fo" path="res://assets/graphics/GATOLARANJA.png" id="3_qdv50"]
+[ext_resource type="FontFile" uid="uid://e4ny0eov512t" path="res://assets/graphics/Pixellettersfull-BnJ5.ttf" id="4_5nbuq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfgyt"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwch4"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6j5r"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg4dj"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6gwy"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyvr4"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7h2p"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wntxj"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta0d5"]
+atlas = ExtResource("3_qdv50")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ei5rx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfgyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwch4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6j5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg4dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6gwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyvr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7h2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wntxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta0d5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ln28"]
+font = ExtResource("4_5nbuq")
+
+[node name="CaixaAberta" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_yqv0e")
+script = ExtResource("2_ymn4c")
+
+[node name="fita caixa aberta" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(8.5, 6)
+texture = ExtResource("2_fflgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0.5, -14)
+sprite_frames = SubResource("SpriteFrames_ei5rx")
+frame_progress = 0.86685
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -27.6
+offset_top = 19.0
+offset_right = 85.4
+offset_bottom = 42.0
+scale = Vector2(0.5, 0.5)
+text = "Don't whack this box"
+label_settings = SubResource("LabelSettings_3ln28")

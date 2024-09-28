@@ -27,6 +27,8 @@ func on_end_game():
 
 func start_move() -> void:
 	# get a random value from the curve and set the wait time in the Bounce Timer
+	$caixa_sprite.visible = true
+	$caixa_amassada_1.visible = false
 	var play_time_inter = 1.0 - ((game_manager.timer.time_left + randf_range(-5, 5)) / game_manager.game_time)
 	play_time_inter = clamp(play_time_inter, 0, 1)
 	print(play_time_inter)
@@ -52,6 +54,8 @@ func change_sprite(sprite: CompressedTexture2D) -> void:
 
 
 func Hit() -> void:
+	$caixa_amassada_1.visible = true
+	$caixa_sprite.visible = false
 	hit.emit(self, $BounceTime.time_left/$BounceTime.wait_time)
 	can_go = false
 	change_sprite(caixa_hit)

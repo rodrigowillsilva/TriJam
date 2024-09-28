@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://brsva2k2lkgfb"]
+[gd_scene load_steps=12 format=3 uid="uid://brsva2k2lkgfb"]
 
 [ext_resource type="Script" path="res://Scripts/caixa.gd" id="1_mx8gc"]
 [ext_resource type="Texture2D" uid="uid://cwrv7a8fa24yi" path="res://assets/graphics/caixa_fechada.png" id="2_7kie1"]
+[ext_resource type="Texture2D" uid="uid://cclnttkd33mba" path="res://assets/graphics/caixa_amassada.png" id="3_065qt"]
 [ext_resource type="Texture2D" uid="uid://bmf57rigt072n" path="res://assets/graphics/fita_caixa.png" id="3_oecgp"]
 
 [sub_resource type="Curve" id="Curve_tksox"]
@@ -63,10 +64,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(0.554785, 1),
+"times": PackedFloat32Array(0, 0.45, 0.55, 0.65, 0.75),
+"transitions": PackedFloat32Array(-7.46428, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -175)]
+"values": [Vector2(0, 0), Vector2(0, -190), Vector2(0, -185), Vector2(0, -190), Vector2(0, -185)]
 }
 
 [sub_resource type="Animation" id="Animation_0yctg"]
@@ -79,10 +80,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 1),
-"transitions": PackedFloat32Array(0.366021, 1.7411, 1),
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(-3.86375, 1.31951, 1),
 "update": 0,
-"values": [Vector2(0, -175), Vector2(0, -195), Vector2(0, 0)]
+"values": [Vector2(0, -175), Vector2(0, -100), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bw4e3"]
@@ -94,7 +95,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nov27"]
-size = Vector2(114, 118)
+size = Vector2(128, 108.667)
 
 [node name="Caixa" type="Node2D"]
 scale = Vector2(1.5, 1.5)
@@ -106,11 +107,6 @@ libraries = {
 "": SubResource("AnimationLibrary_bw4e3")
 }
 
-[node name="HitBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("RectangleShape2D_nov27")
-
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
 
@@ -121,6 +117,27 @@ one_shot = true
 [node name="caixa_sprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("2_7kie1")
+
+[node name="caixa_amassada_1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -2.66666)
+scale = Vector2(4, 4)
+texture = ExtResource("3_065qt")
+region_enabled = true
+region_rect = Rect2(0, 0, 34, 26)
+
+[node name="caixa_amassada_2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(4, 4)
+texture = ExtResource("3_065qt")
+region_enabled = true
+region_rect = Rect2(0, 34, 34, 24)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-1.90735e-06, 5.66668)
+shape = SubResource("RectangleShape2D_nov27")
 
 [node name="fite_sprite" type="Sprite2D" parent="."]
 position = Vector2(-8, -24)
