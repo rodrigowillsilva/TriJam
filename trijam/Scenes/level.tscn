@@ -19,8 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://cloixbkem25vs" path="res://assets/sounds/Orjis - Nature -2HAC Volume 27- - 14 Welcome to Abandoned Industrial Site 4B.ogg" id="19_jk84b"]
 
 [sub_resource type="Curve" id="Curve_aq0ej"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.30566), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.266854, 0.607547), 0.0, 0.0, 0, 0, Vector2(0.502809, 0.592453), 0.0, 0.0, 0, 0, Vector2(0.75, 0.350943), 0.0, 0.0, 0, 0, Vector2(0.924157, 0.350943), 0.0, 0.0, 0, 0, Vector2(1, 0.230189), 0.0, 0.0, 0, 0]
+point_count = 6
 
 [sub_resource type="Curve" id="Curve_vhwoa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.320755), 0.0, 0.0, 0, 0]

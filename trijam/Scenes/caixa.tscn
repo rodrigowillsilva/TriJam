@@ -52,10 +52,24 @@ tracks/1/keys = {
 "method": &"on_go_down"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_cooldown_timeout"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_lvmq3"]
 resource_name = "go_up"
-length = 1.5
+length = 0.9
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,6 +99,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, -175), Vector2(0, -100), Vector2(0, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_cooldown_timeout"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bw4e3"]
 _data = {
@@ -106,6 +134,7 @@ bounce_curve = SubResource("Curve_tksox")
 libraries = {
 "": SubResource("AnimationLibrary_bw4e3")
 }
+autoplay = "RESET"
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
@@ -144,5 +173,4 @@ position = Vector2(-8, -24)
 scale = Vector2(4, 4)
 texture = ExtResource("3_oecgp")
 
-[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="BounceTime" to="." method="_on_bounce_time_timeout"]
